@@ -1,1 +1,1 @@
-Relógio Dital
+Relógio Digital
