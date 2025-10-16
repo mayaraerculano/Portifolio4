@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Neon Glowing Digital Clock</title>
+
+  <style>
+
+    * {
+
+      margin: 0;
+
+      padding: 0;
+
+      box-sizing: border-box;
+
+      font-family: "Poppins", sans-serif;
+
+    }
+
+    body {
+
+      height: 100vh;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      background: url("https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80")
+
+        no-repeat center center/cover;
+
+      overflow: hidden;
+
+    }
+
+    .overlay {
+
+      position: absolute;
+
+      top: 0;
+
+      left: 0;
+
+      width: 100%;
+
+      height: 100%;
+
+      background: rgba(0, 0, 0, 0.7);
+
+      backdrop-filter: blur(6px);
+
+    }
+
+    .clock-container {
+
+      position: relative;
+
+      z-index: 2;
+
+      text-align: center;
+
+      color: #00ffff;
+
+      padding: 40px 70px;
+
+      border-radius: 25px;
+
+      background: rgba(0, 0, 0, 0.4);
+
+      box-shadow: 0 0 30px #00ffff, inset 0 0 20px #00ffff;
+
+      animation: glowPulse 3s infinite alternate;
+
+    }
+
+    @keyframes glowPulse {
+
+      from {
+
+        box-shadow: 0 0 30px #00ffff, inset 0 0 20px #00ffff;
+
+      }
+
+      to {
+
+        box-shadow: 0 0 60px #00ffff, inset 0 0 40px #00ffff;
+
+      }
+
+    }
+
+    h2 {
+
+      font-size: 1.8em;
+
+      letter-spacing: 2px;
+
+      color: #ffffffcc;
+
+      margin-bottom: 15px;
+
+    }
+
+    #clock {
+
+      font-size: 3.5em;
+
+      font-weight: 700;
+
+      letter-spacing: 4px;
+
+      color: #00ffff;
+
+      text-shadow:
+
+        0 0 10px #00ffff,
+
+        0 0 20px #00ffff,
+
+        0 0 40px #00ffff,
+
+        0 0 80px #00ffff;
+
+      transition: all 0.2s ease;
+
+    }
+
+    footer {
+
+      margin-top: 25px;
+
+      font-size: 0.85em;
+
+      color: #ffffffaa;
+
+      letter-spacing: 1px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="overlay"></div>
+
+  <div class="clock-container">
+
+    <h2>🕒 Neon Digital Clock</h2>
+
+    <div id="clock">00:00:00</div>
+
+    <footer>Glowing Style ✨</footer>
+
+  </div>
+
+  <script>
+
+    function updateClock() {
+
+      const now = new Date();
+
+      let h = now.getHours();
+
+      let m = now.getMinutes();
+
+      let s = now.getSeconds();
+
+      const session = h >= 12 ? "PM" : "AM";
+
+      h = h % 12 || 12;
+
+      h = h < 10 ? "0" + h : h;
+
+      m = m < 10 ? "0" + m : m;
+
+      s = s < 10 ? "0" + s : s;
+
+      document.getElementById("clock").innerHTML = `${h}:${m}:${s} ${session}`;
+
+    }
+
+    setInterval(updateClock, 1000);
+
+    updateClock();
+
+  </script>
+
+</body>
+
+</html>
